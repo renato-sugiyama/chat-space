@@ -12,8 +12,8 @@
           = fa_icon 'cog', class: 'icon'
   .Groups
     .Group
-      -# - current_user.groups.each do |group|
-        -# = link_to group_messages_path(group) do
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
           %p.Group__group-name
             = group.name
           %p.Group__latest-message
