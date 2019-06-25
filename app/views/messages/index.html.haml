@@ -1,0 +1,45 @@
+!!!
+.Chat-side
+  .Side-header
+    .Side-header__box
+      %p.Side-header__box__user-name
+        = current_user.name
+    %ul.Side-header__box__menu
+      %li.Side-header__box__menu__new-group
+        -# = link_to new_group_path do
+        -#   = fa_icon 'pencil-square-o', class: 'icon'
+      %li.Side-header__box__menu__edit-user
+        -# = link_to edit_user_path(current_user) do
+        -#   = fa_icon 'cog', class: 'icon'
+  .Groups
+    .Group
+      -# - current_user.groups.each do |group|
+        -# = link_to group_messages_path(group) do
+          %p.Group__group-name
+            = group.name
+          %p.Group__latest-message
+            メッセージはまだありません
+.Chat-main
+  .Main-header
+    .Main-header__left-box
+      %h2.Main-header__left-box__current-group
+        Group1
+      %ul.Main-header__left-box__member-list
+        Member:
+        %li.Main-header__left-box__member-list__member
+          Name1, Name2
+    .Main-header__edit-btn
+      Edit
+  .Messages
+    -# =render @messages
+
+
+  .Form
+    %form{class: "New-message", method: "post"}
+      .Input-box
+        -# = form_for [@group, @message] do |f|
+        -#   = f.text_field :content, class: "Input-box__text", placeholder: 'type a message'
+        -#   = f.label :image, class: 'Input-box__image' do
+        -#     = fa_icon 'picture-o', class: 'fa-image'
+        -#     = f.file_field :image, class: 'hidden'
+        -#   = f.submit 'Send', class: 'Submit-btn'
