@@ -68,10 +68,10 @@
     bottom: 0;
     width: calc(100vw - 380px);
     .New-message{
-      display: flex;
       .Input-box{
         position: relative;
         width: 100%;
+        display: flex;
         &__text{
           height: 50px;
           width: 100%;
@@ -83,7 +83,7 @@
           font-size: 1.3rem;
           position: absolute;
           top: 10px;
-          right: 0px;
+          right: 135px;
           cursor: pointer;
           .fa-image{
             display: inline-block;
@@ -92,7 +92,7 @@
             text-rendering: auto;
             -webkit-font-smoothing: antialiased;
           }
-          &__file{
+          .hidden{
             display: none;
           }
         }

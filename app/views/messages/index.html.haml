@@ -18,7 +18,7 @@
           %p.Group__group-name
             = group.name
           %p.Group__latest-message
-            メッセージはまだありません
+            = group.show_last_message
 .Chat-main
   .Main-header
     .Main-header__left-box
@@ -31,7 +31,7 @@
     .Main-header__edit-btn
       Edit
   .Messages
-  =render @messages
+    = render @messages
 
   .Form
     %form{class: "New-message", method: "post"}
