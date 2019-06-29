@@ -34,11 +34,10 @@
     = render @messages
 
   .Form
-    %form{class: "New-message", method: "post"}
-      .Input-box
-        = form_for [@group, @message] do |f|
-          = f.text_field :content, class: "Input-box__text", placeholder: 'type a message'
-          = f.label :image, class: 'Input-box__image' do
-            = fa_icon 'picture-o', class: 'fa-image'
-            = f.file_field :image, class: 'hidden'
-          = f.submit 'Send', class: 'Submit-btn'
+    .Input-box
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: "Input-box__text", placeholder: 'type a message'
+        = f.label :image, class: 'Input-box__image', multipart: true do
+          = fa_icon 'picture-o', class: 'fa-image'
+          = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'Submit-btn'
