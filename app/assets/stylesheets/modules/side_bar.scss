@@ -19,17 +19,14 @@
       display: flex;
       &__new-group{
         margin-left: 0.3rem;
-        a{
-          color: white;
-          .fa-edit{
-            color: $color;
-            display: inline-block;
-            font: normal normal normal 14px/1 FontAwesome;
-            font-size: inherit;
-            text-rendering: auto;
-            -webkit-font-smoothing: antialiased;
+        .fa-edit{
+          color: $color;
+          display: inline-block;
+          font: normal normal normal 14px/1 FontAwesome;
+          font-size: inherit;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
         }
-      }
       }
       &__edit-user{
         margin-left: 0.3rem;
@@ -50,21 +47,19 @@
     background-color: #2f3e51;
     padding: 20px 20px 0;
     overflow: scroll;
-    bottom: 0;
     .Group{
       margin-bottom: 40px;
-      a{
+      .a{
         color: white;
-        text-decoration: none;
-        .Group__group-name{
-          font-size: 15px;
-          margin-bottom: 5px;
-        }
-        .Group__latest-message{
-          font-size: 11px;
-          margin-bottom: 40px;
-        }
+      &__Group-name{
+        color: white;
+        font-size: 15px;
+        margin-bottom: 5px;
       }
+      &__latest-message{
+        font-size: 11px;
+      }
+    }
     }
   }
 } 

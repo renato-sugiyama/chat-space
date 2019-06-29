@@ -35,7 +35,7 @@
   }
   .Messages{
     height: calc(100vh - 190px);
-    padding: 46px 40px;
+    padding: 45px 40px;
     background-color: #fafafa;
     overflow: scroll;
     .Message{
@@ -58,6 +58,11 @@
         color: #434a54;
         font-size: 14px;
         margin-bottom: 10px;
+        .lower-message__content{
+        }
+        .lower-message__image{
+          size: 20cd;
+        }
       }
     }
   }
@@ -67,44 +72,45 @@
     position: fixed;
     bottom: 0;
     width: calc(100vw - 380px);
-    .New-message{
-      display: flex;
       .Input-box{
         position: relative;
-        width: 100%;
-        &__text{
+        .new_message{
+          display: flex;
+          .Input-box__text{
+            width: calc(100% - 120px);
+            height: 50px;
+            padding: 0 0 0 10px;
+            margin-right: 25px;
+            color: #434a54;
+            border-style: none;
+          }
+          .Input-box__image{
+            font-size: 1.3rem;
+            position: absolute;
+            top: 10px;
+            right: 135px;
+            cursor: pointer;
+            .fa-image{
+              display: inline-block;
+              font: normal normal normal 14px/1 FontAwesome;
+              font-size: inherit;
+              text-rendering: auto;
+              -webkit-font-smoothing: antialiased;
+            }
+            .hidden{
+              display: none;
+            }
+          }
+        .Submit-btn{
+          float: right;
+          right: 0;
+          width: 100px;
           height: 50px;
-          width: 100%;
-          padding: 0 0 0 10px;
-          color: #434a54;
-          border-style: none;
-        }
-        &__image{
-          font-size: 1.3rem;
-          position: absolute;
-          top: 10px;
-          right: 0px;
+          padding: 0 30px;
+          background-color: #38aef0;
+          color: $color;
           cursor: pointer;
-          .fa-image{
-            display: inline-block;
-            font: normal normal normal 14px/1 FontAwesome;
-            font-size: inherit;
-            text-rendering: auto;
-            -webkit-font-smoothing: antialiased;
-          }
-          &__file{
-            display: none;
-          }
         }
-      }
-      .Submit-btn{
-        width: 100px;
-        height: 50px;
-        padding: 0 30px;
-        margin-left: 25px;
-        background-color: #38aef0;
-        color: $color;
-        cursor: pointer;
       }
     }
   }
