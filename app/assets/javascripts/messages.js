@@ -41,7 +41,7 @@ $('#new_message').on('submit', function(e){
   .done(function(data){
     var html = buildHTML(data);
     $('.Messages').append(html);
-    $('#message_content').val('');
+    $('#new_message.new_message')[0].reset();
     scroll()
   })
   .fail(function(data){
