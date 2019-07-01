@@ -28,8 +28,9 @@
         Member:
         %li.Main-header__left-box__member-list__member
           Name1, Name2
-    .Main-header__edit-btn
-      Edit
+    = link_to edit_group_path(@group) do
+      .Main-header__edit-btn
+        Edit
   .Messages
     = render @messages
 
