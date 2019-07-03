@@ -61,14 +61,13 @@ $('#new_message').on('submit', function(e){
 })
 
   function reloadMessages() {
-    if($('.Messages')[0]){
+    if (window.location.href.match(/\/group\/\d+\/messages/)){
     var last_message_id = $('.Message').last().data('message-id');
-  } else {
-    var last_message_id = 0
-  }
 
   var group_id_url = $('h2.Main-header__left-box__current-group').data('groups-id')
   var url = "/groups/" + group_id_url + "/api/messages"
+
+
 
   $.ajax({
     url: url,
@@ -87,5 +86,6 @@ $('#new_message').on('submit', function(e){
     alert('自動更新に失敗しました。');
 })
   }
+}
   setInterval(reloadMessages, 5000)
 });
