@@ -22,15 +22,15 @@
 .Chat-main
   .Main-header
     .Main-header__left-box
-      %h2.Main-header__left-box__current-group
-        Group1
+      %h2.Main-header__left-box__current-group{"data-groups-id": "#{@group.id}"}
+        = @group.name
       %ul.Main-header__left-box__member-list
         Member:
         %li.Main-header__left-box__member-list__member
-          Name1, Name2
-    = link_to edit_group_path(@group) do
-      .Main-header__edit-btn
-        Edit
+          - @group.group_users.each do |group_user|
+            = group_user.user.name
+        = link_to edit_group_path(@group) do
+          .Main-header__edit-btn Edit
   .Messages
     = render @messages
 

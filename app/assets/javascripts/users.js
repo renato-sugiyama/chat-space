@@ -18,7 +18,7 @@ $(function(){
                 <p class='chat-group-user__name'>${ user_name }</p>
                 <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
               </div>`
-              console.log(html)
+
               selected_list.append(html);
   }
 
@@ -33,13 +33,13 @@ $(function(){
   })
 
   .done(function(users) {
-    $("#user-search-field.chat-group-form__input").empty();
+    $("#user-search-result").empty();
     if (users.length !== 0) {
       users.forEach(function(user){
         appendUsers(user);
       });
       if (input.length === 0) {
-        $("#user-search-result").remove();
+        $("#user-search-result").empty();
       };
     }
     else {
@@ -54,7 +54,7 @@ $(function(){
   $("#user-search-result").on('click', '.chat-group-user__btn--add', function(){
   var user_id = $(this).data("user-id");
   var user_name = $(this).data("user-name");
-  $(".chat-group-user").remove();
+  $(this).parent().remove();
   appendUser(user_id, user_name);
   })
   
