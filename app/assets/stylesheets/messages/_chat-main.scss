@@ -21,7 +21,7 @@
         color: #999999;
         &__member{
         }
-        }
+      }
     }
     &__edit-btn{
       height: 40px;
@@ -31,6 +31,7 @@
       border: solid 1px #38aef0;
       position: absolute;
       right: 40px;
+      top: 0;
       color: #38aef0;
     }
   }

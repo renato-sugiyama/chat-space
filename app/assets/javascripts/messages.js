@@ -3,13 +3,13 @@ $(function(){
   function buildHTML(message) {
     var content = message.content ? `${ message.content }` : "";
     var img = message.image ? `<img src= ${ message.image }>` : "";
-    var html =`<div class="Message" id="${message.id}">
+    var html =`<div class="Message" data-message-id="${message.id}">
                 <div class="Message__upper-info">
                 <p class="Message__upper-info__talker">
                 ${message.user_name}
                 </p>
                 <p class="Message__upper-info__date">
-                ${message.date}
+                ${message.created_at}
                 </p>
                 </div>
                 <p class="Message__text">
@@ -24,6 +24,14 @@ $(function(){
 
   function scroll() {
     $('.Messages').animate({scrollTop: $('.Messages')[0].scrollHeight});
+}
+
+function scrollBottom(){
+  var target = $('.Message').last();
+  var position = target.offset().top + $('.Messages').scrollTop();
+  $('.Messages').animate({
+    scrollTop: position
+  }, 300, 'swing');
 }
 
 $('#new_message').on('submit', function(e){
@@ -47,5 +55,40 @@ $('#new_message').on('submit', function(e){
   .fail(function(data){
     alert('エラーが発生したためメッセージは送信できませんでした。');
   })
+  .always(function(data){
+    $('.submit-btn').prop('disabled', false);
+  });
 })
+
+  function reloadMessages() {
+    if($('.Messages')[0]){
+    var last_message_id = $('.Message').last().data('message-id');
+  } else {
+    var last_message_id = 0
+  }
+
+  var reg = RegExp(/^[1-9][0-9]*$/)
+  var group_id_url = $('h2.Main-header__left-box__current-group').data('groups-id')
+  if (group_id_url == reg){
+  var url = "/groups/" + group_id_url + "/api/messages"
+
+  $.ajax({
+    url: url,
+    type: 'GET',
+    dataType: 'json',
+    data: {id: last_message_id}
+  })
+    .done(function(messages){
+    messages.forEach(function(message){
+    var insertHTML = buildHTML(message);
+    $('.Messages').append(insertHTML);
+    scrollBottom();
+    });
+  })
+  .fail(function(){
+    alert('自動更新に失敗しました。');
+})
+  }
+  }
+  setInterval(reloadMessages, 5000)
 });
