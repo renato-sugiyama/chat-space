@@ -67,9 +67,7 @@ $('#new_message').on('submit', function(e){
     var last_message_id = 0
   }
 
-  // var reg = RegExp([/^[1-9][0-9]*$/])
   var group_id_url = $('h2.Main-header__left-box__current-group').data('groups-id')
-  // if (group_id_url === reg){
   var url = "/groups/" + group_id_url + "/api/messages"
 
   $.ajax({
@@ -89,6 +87,5 @@ $('#new_message').on('submit', function(e){
     alert('自動更新に失敗しました。');
 })
   }
-  // }
   setInterval(reloadMessages, 5000)
 });
