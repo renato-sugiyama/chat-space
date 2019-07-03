@@ -29,8 +29,8 @@
         %li.Main-header__left-box__member-list__member
           - @group.group_users.each do |group_user|
             = group_user.user.name
-    %a{href: "/groups/#{@group[:id]}/edit"}
-      .Main-header__edit-btn Edit
+        = link_to edit_group_path(@group) do
+          .Main-header__edit-btn Edit
   .Messages
     = render @messages
 
