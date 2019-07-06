@@ -56,6 +56,7 @@ $(function(){
   var user_name = $(this).data("user-name");
   $(this).parent().remove();
   appendUser(user_id, user_name);
+  group_user_ids << user_id
   })
   
   $(".chat-group-users.js-add-user").on('click', '.chat-group-user__btn--remove', function(){
