@@ -26,7 +26,7 @@
     .chat-group-form__field--right
       .chat-group-users.js-add-user
         .chat-group-user.clearfix.js-chat-member{id: "#{current_user.id}"}
-          %input{name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}"}
+          %input{name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}", id: "#{group_user_ids}"}
           %p.chat-group-user__name
             = current_user.name
 
