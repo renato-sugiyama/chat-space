@@ -25,7 +25,7 @@
       %h2.Main-header__left-box__current-group{"data-groups-id": "#{@group.id}"}
         = @group.name
       %ul.Main-header__left-box__member-list
-        Member:
+        Member：
         %li.Main-header__left-box__member-list__member
           - @group.group_users.each do |group_user|
             = group_user.user.name

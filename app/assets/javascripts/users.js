@@ -61,5 +61,4 @@ $(function(){
   $(".chat-group-users.js-add-user").on('click', '.chat-group-user__btn--remove', function(){
   $(".chat-group-users.js-add-user").remove();
   })
-
 });
