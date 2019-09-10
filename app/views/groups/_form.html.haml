@@ -15,7 +15,6 @@
     .chat-group-form__field--left
       %label.chat-group-form__label{for: "chat_group_チャットメンバーを追加"} チャットメンバーを追加
     .chat-group-form__field--right
-
       .chat-group-form__search.clearfix
         %input#user-search-field.chat-group-form__input{placeholder: "追加したいユーザー名を入力してください", type: "text"}/
       #user-search-result
@@ -25,13 +24,14 @@
       %label.chat-group-form__label{for: "chat_group_チャットメンバー"} チャットメンバー
     .chat-group-form__field--right
       .chat-group-users.js-add-user
-      - @group.group_users.each do |group_user|
-        .chat-group-user.clearfix.js-chat-member
-          %input{name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}"}
-          %p.chat-group-user__name
-            = group_user.user.name
-          .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
-            
+        - @group.group_users.each do |group_user|
+          .chat-group-user.clearfix.js-chat-member
+            %input{name: "group[user_ids][]", class: "select_user_add", type: "hidden", value: "#{group_user.user.id}"}
+            %p.chat-group-user__name
+              = group_user.user.name
+              -if group_user.user.id != current_user.id
+                .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
+
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right

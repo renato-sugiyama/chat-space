@@ -13,8 +13,8 @@ $(function(){
   var selected_list = $(".chat-group-users.js-add-user")
 
   function appendUser(user_id, user_name){
-    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-${ user_id }'>
-                <input name='group[user_ids][]' type='hidden' value=${ user_id }>
+    var html = `<div class='chat-group-user clearfix js-chat-member'>
+                <input name='group[user_ids][]' class="select_user_add" type='hidden' value=${ user_id }>
                 <p class='chat-group-user__name'>${ user_name }</p>
                 <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
               </div>`
@@ -23,12 +23,15 @@ $(function(){
   }
 
  $("#user-search-field").on('keyup', function(e){
-  e.preventDefault();
+    var add_user_ids = [0];
+    $('.select_user_add').each(function(){
+      add_user_ids.push($(this).val());
+    })
   var input = $("#user-search-field").val();
   $.ajax({
     url: "/users",
     type: 'GET',
-    data: { keyword: input },
+    data: { keyword: input, 'user_ids[]': add_user_ids},
     dataType: 'json'
   })
 
@@ -59,6 +62,6 @@ $(function(){
   })
   
   $(".chat-group-users.js-add-user").on('click', '.chat-group-user__btn--remove', function(){
-  $(".chat-group-users.js-add-user").remove();
+    $(this).parent().remove();
   })
 });
